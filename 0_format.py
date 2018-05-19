@@ -1303,9 +1303,28 @@ print("{0:}".format('-'*45))
 random.seed(time.time())
 print("Random number with time is:",random.random())
 '''
-
+'''
 import random
 single=random.random()
 list=random.randint(1,2)
 print(single)
 print(list)
+'''
+
+class Mywife():
+    def __init__(self,name,type):
+        self.name=name
+        self.type=type
+        self.age=0
+    def print_info(self):
+        print("\nMy wife {0:} is a {1:}".format(self.name.title(),self.type))
+    def print_age(self):
+        self.age=18
+        print("\nHer age is {0}".format(self.age))
+
+name_wife=input("Enter your wife's name: \n")
+type_wife=input("Enter your wife's type: \n")
+mywife=Mywife(name_wife,type_wife)
+print("{0}".format('-'*35))
+mywife.print_info()
+mywife.print_age()

@@ -1303,12 +1303,13 @@ print("{0:}".format('-'*45))
 random.seed(time.time())
 print("Random number with time is:",random.random())
 '''
-'''
+
 import random
 single=random.random()
 list=random.randint(1,2)
 print(single)
 print(list)
+'''
 '''
 ######
 class Mywife():

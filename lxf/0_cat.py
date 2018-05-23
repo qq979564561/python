@@ -81,3 +81,36 @@ x,y=equation_2(9,1,4)
 if x!=-1 and y!=-1:
     print(x,y)
 '''
+class Mywife():
+    def __init__(self,name,type):
+        self.name=name
+        self.type=type
+        self.age=0
+    def print_info(self):
+        print("\nMy wife {0:} is a {1:}".format(self.name.title(),self.type))
+    def print_age(self):
+        self.age=18
+        print("\nHer age is {0}".format(self.age))
+#####
+'''
+name_wife=input("Enter your wife's name: \n")
+type_wife=input("Enter your wife's type: \n")
+mywife=Mywife(name_wife,type_wife)
+print("{0}".format('-'*35))
+mywife.print_info()
+mywife.print_age()
+'''
+'''
+my_first_wife=Mywife("zz","cat")
+print(isinstance(my_first_wife,Mywife))
+list_is=[1,2,3,4,5]
+print(isinstance(list_is,list))
+
+print(dir(Mywife))
+'''
+list_builder=[x*x for x in range(1,10) if x*x/2 != 0]
+print(list_builder)
+list_1=['x','y','z']
+list_2=[1,2,3]
+list_combine=[vexa+' = '+str(vexb) for vexa in list_1 for vexb in list_2 ]
+print(list_combine)

@@ -1303,7 +1303,7 @@ print("{0:}".format('-'*45))
 random.seed(time.time())
 print("Random number with time is:",random.random())
 '''
-
+'''
 import random
 single=random.random()
 list=random.randint(1,2)
@@ -1324,6 +1324,7 @@ class Mywife():
         print("\nHer age is {0}".format(self.age))
 #####
 '''
+'''
 name_wife=input("Enter your wife's name: \n")
 type_wife=input("Enter your wife's type: \n")
 mywife=Mywife(name_wife,type_wife)
@@ -1339,5 +1340,183 @@ print(isinstance(list_is,list))
 
 print(dir(Mywife))
 '''
+'''
 list_builder=[x*x for x in range(1,10) if x*x/2 != 0]
 print(list_builder)
+'''
+#print("Hello World!")
+
+
+
+
+#####################################
+#数据结构与算法#
+'''
+#冒泡排序#
+import time
+import random
+
+#开始时间
+first_time = time.time()
+
+def new_num(num_list):
+    """随机生成50个数"""
+    for i in range(50):
+       j = random.randint(0, 100000)
+       num_list.append(j)
+    return num_list
+
+def bubble_sort_high(num_list):
+    """升序"""
+    for i in range(len(num_list)-1, 0, -1):
+        for j in range(i):
+            if num_list[j+1] < num_list[j]:
+                num_list[j], num_list[j+1] = num_list[j+1], num_list[j]
+
+def bubble_sort_low(num_list):
+    """降序"""
+    for i in range(len(num_list)-1, 0, -1):
+        for j in range(i):
+            if num_list[j+1] > num_list[j]:
+                num_list[j], num_list[j+1] = num_list[j+1], num_list[j]
+
+
+
+if __name__ == '__main__':
+    num_list_high = []
+    new_num(num_list_high)
+    bubble_sort_high(num_list_high)
+    print("###冒泡排序-升序{0:}".format("#"*100))
+    print(num_list_high)
+
+    num_list_low = []
+    new_num(num_list_low)
+    bubble_sort_low(num_list_low)
+    print("###冒泡排序-降序{0:}".format("#"*100))
+    print(num_list_low)
+
+    last_time = time.time()
+    print('共用时{0}'.format(first_time - last_time))
+'''
+#####################################
+
+#####################################
+#直接插入排序#
+'''
+import random
+import time
+
+def new_num(num_list):
+    """随机生成50个数"""
+    for i in range(50):
+       j = random.randint(0, 100000)
+       num_list.append(j)
+    return num_list
+
+def insert_direct_sort(num_list):
+    n = len(num_list)
+    #从第二个位置 开始插入 坐标为 1
+    for i in range(1,n):
+    #从第 i 个数开始比较（即从前往后），如果小于前一个数，则插入（交换位置）
+        for j in range(i,0,-1):
+            if num_list[j] < num_list[j-1]:
+                num_list[j], num_list[j-1] = num_list[j-1], num_list[j]
+
+if __name__ == '__main__':
+    num_list = []
+    new_num(num_list)
+    insert_direct_sort(num_list)
+    print("###插入排序-升序{0:}".format("#"*100))
+    print(num_list)
+'''
+#####################################
+
+#####################################
+#希尔排序 （重构直接插入排序实现）#
+'''
+import time
+import random
+
+def shell_insert_sort(array, len_array, dk):
+    """直接插入排序"""
+    # dk 为增量
+    for i in range(dk, len_array):
+        position = i
+        current_value = array[position]
+
+        index = 1
+        j = int(index / dk)
+        # j 为index与dk的商
+        index = index - j * dk
+        # index为下标
+        while position > index and current_value < array[position - dk]:
+            # 当前数要小于序列值时为升序
+            # 后移
+            array[position] = array[position -dk]
+            position = position -dk
+        else:
+            array[position] = current_value
+
+def shell_sort(array, len_array):
+    """希尔排序"""
+    dk = int(len_array / 2)
+    # dk 为增量，增量大于等于 1
+    while(dk >= 1):
+        shell_insert_sort(array, len_array, dk)
+        print("当增量为{0:}时".format(dk),end = ",")
+        print("Shell: ",array)
+        dk = int(dk / 2)
+
+def new_num(num_list):
+    """随机生成数(大小10k以内)"""
+    for i in range(5):
+       j = random.randint(0, 100000)
+       num_list.append(j)
+    return num_list
+
+if __name__ == "__main__":
+    num_list = []
+    new_num(num_list)
+    print("Original: ",num_list)
+    shell_sort(num_list, len(num_list))
+'''
+#####################################
+
+#####################################
+#快速排序
+import random
+import time
+
+def quik_sort(array, left, right):
+    if left < right:
+        q = partition(array, left, right)
+        quik_sort(array, left, q - 1)
+        quik_sort(array, q + 1, right)
+
+def partition(array, left, right):
+    """以枢纽 pivotkey 为中心，分割关键字序列，且分别进行排序"""
+    x = array[right]
+    #x = array[left]
+    i = left -1
+    for j in range(left, right):
+        if array[j] <= x:
+            i += 1
+            array[i], array[j] = array[j], array[i]
+    array[i + 1], array[right] = array[right], array[i + 1]
+    return i + 1
+
+def new_num(num_list):
+    """随机生成数(大小10k以内)"""
+    for i in range(500):
+       j = random.randint(0, 100000)
+       num_list.append(j)
+    return num_list
+
+if __name__ == "__main__":
+    num_list = []
+    new_num(num_list)
+    quik_sort(num_list, 0, len(num_list)-1)
+    quik_sort(num_list, 0, len(num_list)-1)
+    quik_sort(num_list, 0, len(num_list)-1)
+    print(num_list)
+#####################################

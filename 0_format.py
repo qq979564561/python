@@ -1483,6 +1483,7 @@ if __name__ == "__main__":
 #####################################
 
 #####################################
+'''
 #快速排序
 import random
 import time
@@ -1520,3 +1521,11 @@ if __name__ == "__main__":
     quik_sort(num_list, 0, len(num_list)-1)
     print(num_list)
 #####################################
+'''
+
+#####################################
+
+import  matplotlib.pyplot as plt
+squares = [1, 4, 9, 16, 25]
+plt.plot(squares)
+plt.show()
